@@ -1,8 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Header from './components/Navbar';
+import Types from './components/PokemonTypeList';
+import Pokemons from './components/PokemonList';
+import axios from './components/util/axios';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-function App() {
+
+
+const App = () => {
+
+  const [characters, setPokemons] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const request = await axios();
+      setPokemons(request.data.results);
+      return request;
+    }
+    fetchData();
+  }, [])
+
+
+
+
+
   return (
     <div className="App">
       <header className="App-header">
