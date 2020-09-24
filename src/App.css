@@ -62,12 +62,39 @@
 }
 
 .poke-card-back {
-  background-color: rgb(255, 255, 255);
-  color: black;
-  transform: rotateY(90deg);
+  background-color: transparent;
+  text-transform: uppercase;
+  border-radius: 40px;
+  font-family: monospace;
+  color: #ffde00;
+  transform: rotateY(180deg);
+  border-style: solid;
+  border-color: #ffde00;
+  border-width: 0.5vh;
+  
 }
 
 .poke-img {
-  width:80%;
-  height:80%;
+  width:100%;
+  height:100%;
 }
+
+.pokemon-profile-pics {
+  width: 250px;
+  height: 250px;
+}
+
+.poke-bar-text {
+  margin-left: 1rem;
+  color: white;
+}
+
+.poke-bar {
+  background-color: #b3a125;
+  font-size: larger;
+  font-weight: bold;
+  font-family: monospace;
+  color: white;
+  
+}
+
