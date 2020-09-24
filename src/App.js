@@ -27,13 +27,14 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="app__">
         <Header />
         <div className='app-container'>
           <Switch>
-            <Route path={'/'} exact component={() => <Pokemons items={characters} />} />
+            <Route path={'/'} exact={true} component={() => <Pokemons items={characters} />} />
             <Route path={'/pokemons'} component={() => <Pokemons items={characters} />} />
             <Route path='/types' component={Types} />
+            <Route path="/pokemon/:id" component={PokemonDetail} />
           </Switch>
         </div>
       </div>
