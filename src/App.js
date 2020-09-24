@@ -4,6 +4,7 @@ import Header from './components/Navbar';
 import Types from './components/PokemonTypeList';
 import Pokemons from './components/PokemonList';
 import axios from './components/util/axios';
+import PokemonDetail from './components/PokemonDetail'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 
