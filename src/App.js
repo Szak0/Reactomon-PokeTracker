@@ -70,8 +70,13 @@ const App = () => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
 
-
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
   return (
     <BrowserRouter>
