@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import Header from './components/Navbar';
-import Types from './components/PokemonTypeList';
-import Pokemons from './components/PokemonList';
-import axios from './components/util/axios';
-import PokemonDetail from './components/PokemonDetail'
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React, { useState } from "react";
+import "./App.css";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Types from "./components/PokemonTypeList";
+import Pokemons from "./components/PokemonList";
+import PokemonDetail from "./components/PokemonDetail";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Box from "@material-ui/core/Box";
+import clsx from "clsx";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import PokeDrawer from "./components/PokeDrawer";
+import NavBar from "./components/Navbar";
 
 const drawerWidth = 300;
 
@@ -79,20 +83,50 @@ const App = () => {
   };
 
   return (
-    <BrowserRouter>
-      <div className="app__">
-        <Header />
-        <div className='app-container'>
-          <Switch>
-            <Route path={'/'} exact={true} component={() => <Pokemons items={characters} />} />
-            <Route path={'/pokemons'} component={() => <Pokemons items={characters} />} />
-            <Route path='/types' component={Types} />
-            <Route path="/pokemon/:id" component={PokemonDetail} />
-          </Switch>
+    <React.Fragment>
+      <BrowserRouter>
+        <div className="app_">
+          <CssBaseline />
+
+          <NavBar
+            open={open}
+            appBarClass={classes.appBar}
+            appBarShiftClass={classes.appBarShift}
+            titleClass={classes.title}
+            openDrawer={handleDrawerOpen}
+            hideClass={classes.hide}
+          />
+
+          <main
+            className={clsx(classes.content, {
+              [classes.contentShift]: open,
+            })}
+          >
+            <div className={classes.drawerHeader} />
+            <Box my={2}>
+              <Switch>
+                <Route path={"/"} exact={true} component={Pokemons} />
+                <Route path={"/pokemons"} component={Pokemons} />
+                <Route path="/types" component={Types} />
+                <Route path="/pokemon/:id">
+                  <PokemonDetail />
+                </Route>
+              </Switch>
+            </Box>
+          </main>
+
+          <PokeDrawer
+            open={open}
+            drawerClass={classes.drawer}
+            drawerPaper={classes.drawerPaper}
+            drawerHeader={classes.drawerHeader}
+            handleDrawer={handleDrawerClose}
+            direction={theme.direction}
+          />
         </div>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </React.Fragment>
   );
-}
+};
 
 export default App;
