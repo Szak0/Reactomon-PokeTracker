@@ -66,18 +66,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const App = () => {
-
-  const [characters, setPokemons] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const request = await axios();
-      setPokemons(request.data.results);
-      return request;
-    }
-    fetchData();
-  }, [])
-
+  const classes = useStyles();
+  const theme = useTheme();
+  const [open, setOpen] = useState(false);
 
 
 
